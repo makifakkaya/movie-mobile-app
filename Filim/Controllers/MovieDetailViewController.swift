@@ -64,8 +64,8 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cvcell", for: indexPath) as! CastCollectionViewCell
-        cell.castLabel1.text = Results[indexPath.row].character
-        cell.castLabel2.text = Results[indexPath.row].original_name
+        cell.characterNameLabel.text = Results[indexPath.row].character
+        cell.originalNameLabel.text = Results[indexPath.row].original_name
         if(Results[indexPath.row].profile_path != nil) {
         let profileImageUrl = "https://image.tmdb.org/t/p/w500"+Results[indexPath.row].profile_path!
         cell.castImage.load(urlString: profileImageUrl)

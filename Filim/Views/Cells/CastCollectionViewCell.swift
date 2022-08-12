@@ -8,8 +8,8 @@
 import UIKit
 
 class CastCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var castLabel2: UILabel!
-    @IBOutlet weak var castLabel1: UILabel!
+    @IBOutlet weak var originalNameLabel: UILabel!
+    @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var castImage: UIImageView!
     
 }

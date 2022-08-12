@@ -446,8 +446,8 @@
                                                         <size key="customSize" width="128" height="200"/>
                                                         <connections>
                                                             <outlet property="castImage" destination="yU5-t4-Mai" id="vEI-5u-kSU"/>
-                                                            <outlet property="castLabel1" destination="vtK-vU-KO9" id="Byk-kQ-bP8"/>
-                                                            <outlet property="castLabel2" destination="VXQ-mU-hnY" id="9us-cW-zR7"/>
+                                                            <outlet property="characterNameLabel" destination="vtK-vU-KO9" id="Byk-kQ-bP8"/>
+                                                            <outlet property="originalNameLabel" destination="VXQ-mU-hnY" id="9us-cW-zR7"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -656,8 +656,8 @@
                                                         <size key="customSize" width="128" height="200"/>
                                                         <connections>
                                                             <outlet property="castImage" destination="J3A-Bd-wPw" id="6cq-hv-8yk"/>
-                                                            <outlet property="castLabel1" destination="0Et-8p-Qi7" id="vya-9s-lj6"/>
-                                                            <outlet property="castLabel2" destination="zaA-Sz-drm" id="hDo-gt-n2B"/>
+                                                            <outlet property="characterNameLabel" destination="0Et-8p-Qi7" id="vya-9s-lj6"/>
+                                                            <outlet property="originalNameLabel" destination="zaA-Sz-drm" id="hDo-gt-n2B"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
