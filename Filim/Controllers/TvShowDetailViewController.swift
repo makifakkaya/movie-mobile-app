@@ -14,7 +14,7 @@ class TvShowDetailViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var tvShowTitle: UILabel!
     @IBOutlet weak var tvShowRating: UILabel!
     @IBOutlet weak var tvShowPopularity: UILabel!
-    @IBOutlet weak var tvShowDuration: UILabel!
+    @IBOutlet weak var tvShowLanguage: UILabel!
     @IBOutlet weak var tvShowSummary: UILabel!
     
     
@@ -22,12 +22,21 @@ class TvShowDetailViewController: UIViewController, UICollectionViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let posterImageUrl = "https://image.tmdb.org/t/p/w500"+tvShow.backdrop_path!
-        tvShowImage.load(urlString: posterImageUrl)
+        
+        if(tvShow.backdrop_path != nil) {
+            
+            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+tvShow.backdrop_path!
+            tvShowImage.load(urlString: posterImageUrl)
+        } else {
+            
+            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+tvShow.poster_path!
+            tvShowImage.load(urlString: posterImageUrl)
+        }
+        
         tvShowTitle.text = tvShow.name
         tvShowRating.text = "\(tvShow.vote_average) / 10"
         tvShowPopularity.text = "\(tvShow.popularity)"
-        tvShowDuration.text = tvShow.original_language
+        tvShowLanguage.text = tvShow.original_language
         tvShowSummary.text = tvShow.overview
         loadData(tvShowID: tvShow.id)
     }
@@ -54,7 +63,7 @@ class TvShowDetailViewController: UIViewController, UICollectionViewDelegate, UI
         }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Results.count >= 10 ? 10 : Results.count
+        return Results.count
 
     }
     
@@ -66,8 +75,13 @@ class TvShowDetailViewController: UIViewController, UICollectionViewDelegate, UI
         //cell.castImage.image = UIImage(named: castImages[indexPath.row])
         cell.castLabel1.text = Results[indexPath.row].character
         cell.castLabel2.text = Results[indexPath.row].original_name
-        let profileImageUrl = "https://image.tmdb.org/t/p/w500"+Results[indexPath.row].profile_path!
-        cell.castImage.load(urlString: profileImageUrl)
+        
+        if(Results[indexPath.row].profile_path != nil) {
+            
+            let profileImageUrl = "https://image.tmdb.org/t/p/w500"+Results[indexPath.row].profile_path!
+            cell.castImage.load(urlString: profileImageUrl)
+            
+        }
         
         return cell
     }

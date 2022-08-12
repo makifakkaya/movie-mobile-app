@@ -9,15 +9,32 @@ import UIKit
 
 class MovieTableViewController: UITableViewController {
     
-    var Results: [Movie] = []
+    var currentURL: String = "https://api.themoviedb.org/3/movie/popular?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
+    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
+        switch segmentedControlOutlet.selectedSegmentIndex {
+        case 0:
+            currentURL = "https://api.themoviedb.org/3/movie/popular?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
+            loadData()
+            self.tableView.reloadData()
+        case 1:
+            currentURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
+            loadData()
+            self.tableView.reloadData()
+        case 2:
+            currentURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
+            loadData()
+            self.tableView.reloadData()
+        default:
+            break
+        }
+    }
+    @IBOutlet weak var segmentedControlOutlet: UISegmentedControl!
     
+    var Results: [Movie] = []
     var Result: PopularMovies?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-         //getPopularMovies(from: popularMoviesURL)
         loadData()
     }
     
@@ -32,8 +49,7 @@ class MovieTableViewController: UITableViewController {
     
     
     private func loadData(){
-        
-            guard let jsonUrl = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"), let data = try? Data(contentsOf: jsonUrl) else {
+            guard let jsonUrl = URL(string: currentURL), let data = try? Data(contentsOf: jsonUrl) else {
                  return
             }
             do {
@@ -49,17 +65,13 @@ class MovieTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         return Results.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviecell", for: indexPath) as! MovieTableViewCell
-loadData()
         cell.prepareMovie(movie: Results[indexPath.row])
         return cell
     }

@@ -31,14 +31,9 @@ class MovieTableViewCell: UITableViewCell {
         releaseCateLabel.text = "📅 \(movie.release_date)"
         voteAverageLabel.text = "⭐ \(movie.vote_average) / 10"
         popularityLabel.text = "👥 \(movie.popularity)"
-        originalLanguageLabel.text = "\(movie.original_language.uppercased())"
-        //https://image.tmdb.org/t/p/w500\(movie.poster_path)
         let posterImageUrl = "https://image.tmdb.org/t/p/w500"+movie.poster_path!
         posterImage.load(urlString: posterImageUrl)
-        
-        
-        
-        //originalLanguageLabel.text = "\(flag(country: movie.original_language.uppercased() == "EN" ? "US" : movie.original_language.uppercased() ))"
+        originalLanguageLabel.text = "\(flag(country: movie.original_language.uppercased() == "EN" ? "US" : movie.original_language.uppercased() ))"
     }
     
     func flag(country:String) -> String {
