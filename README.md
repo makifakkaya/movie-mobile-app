@@ -6,5 +6,4 @@ made by using [TheMovieDB](https://developers.themoviedb.org/)
 
 ![](https://i.hizliresim.com/h81rcbw.png)
 
-
-![](https://i.hizliresim.com/hzxn0e6.png)
+![](https://i.hizliresim.com/1of4din.png)
