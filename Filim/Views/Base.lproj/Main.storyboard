@@ -122,7 +122,7 @@
                             <outlet property="delegate" destination="aUt-us-XDm" id="Kkm-3Q-gI7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Movies" id="BWT-Gd-pVJ"/>
+                    <navigationItem key="navigationItem" title="Movies" id="2bE-Zk-1IG"/>
                     <connections>
                         <outlet property="segmentedControlOutlet" destination="elX-49-gic" id="auC-jT-jP0"/>
                     </connections>
@@ -270,7 +270,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="KlE-JF-Qrb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lBb-al-TE8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="SRc-LU-qR3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k7H-yE-8vL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -282,6 +281,7 @@
                         <segue destination="paf-Fi-44B" kind="relationship" relationship="viewControllers" id="BRe-2O-HDK"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBb-al-TE8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2523" y="-146"/>
         </scene>
@@ -410,7 +410,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="200"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yU5-t4-Mai">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yU5-t4-Mai">
                                                                     <rect key="frame" x="0.0" y="8" width="128" height="145"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="128" id="1ii-N5-VhV"/>
@@ -620,7 +620,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J3A-Bd-wPw">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J3A-Bd-wPw">
                                                                     <rect key="frame" x="0.0" y="8" width="128" height="145"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="145" id="B1a-OF-k3H"/>
