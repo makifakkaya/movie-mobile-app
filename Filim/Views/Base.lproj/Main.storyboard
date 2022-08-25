@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-Od-3FN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1129"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="669"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logan-wide.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kue-3J-acN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
@@ -468,21 +468,24 @@
                                             <constraint firstItem="kue-3J-acN" firstAttribute="top" secondItem="VjL-Od-3FN" secondAttribute="top" id="X7f-z3-D1E"/>
                                             <constraint firstAttribute="trailing" secondItem="kue-3J-acN" secondAttribute="trailing" id="Yr3-jM-FCE"/>
                                             <constraint firstAttribute="trailing" secondItem="RCt-kL-RwV" secondAttribute="trailing" constant="45" id="aaj-Zs-vHI"/>
-                                            <constraint firstAttribute="height" constant="1129" id="bBY-QG-ug1"/>
                                             <constraint firstAttribute="trailing" secondItem="rmp-8z-fVM" secondAttribute="trailing" constant="20" symbolic="YES" id="ehL-wd-Zf5"/>
                                             <constraint firstAttribute="trailing" secondItem="AIe-2k-kVb" secondAttribute="trailing" constant="20" symbolic="YES" id="kCg-So-eIl"/>
                                             <constraint firstItem="0hd-ap-Y5d" firstAttribute="top" secondItem="RCt-kL-RwV" secondAttribute="bottom" constant="32" id="mzc-Gk-PtK"/>
                                             <constraint firstItem="AIe-2k-kVb" firstAttribute="leading" secondItem="VjL-Od-3FN" secondAttribute="leading" constant="20" symbolic="YES" id="vMy-oY-Cqc"/>
+                                            <constraint firstAttribute="bottom" secondItem="rmp-8z-fVM" secondAttribute="bottom" constant="40" id="wjI-Om-ksc"/>
                                             <constraint firstAttribute="trailing" secondItem="0hd-ap-Y5d" secondAttribute="trailing" constant="20" symbolic="YES" id="xs8-Sz-apG"/>
                                             <constraint firstItem="RCt-kL-RwV" firstAttribute="top" secondItem="AIe-2k-kVb" secondAttribute="bottom" constant="28" id="zcu-Ap-OuP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="VjL-Od-3FN" firstAttribute="bottom" secondItem="qiw-Sd-YZR" secondAttribute="bottom" id="Tu1-ZM-4dz"/>
+                                    <constraint firstItem="VjL-Od-3FN" firstAttribute="leading" secondItem="qiw-Sd-YZR" secondAttribute="leading" id="DQQ-48-mmM"/>
+                                    <constraint firstItem="VjL-Od-3FN" firstAttribute="top" secondItem="Pam-zA-6iQ" secondAttribute="top" id="XAW-bk-6S8"/>
                                     <constraint firstItem="VjL-Od-3FN" firstAttribute="trailing" secondItem="qiw-Sd-YZR" secondAttribute="trailing" id="htP-nF-pRN"/>
                                     <constraint firstItem="VjL-Od-3FN" firstAttribute="leading" secondItem="qiw-Sd-YZR" secondAttribute="leading" id="kjG-wL-0Tp"/>
+                                    <constraint firstAttribute="bottom" secondItem="VjL-Od-3FN" secondAttribute="bottom" constant="20" id="nMC-qw-lEL"/>
                                     <constraint firstItem="VjL-Od-3FN" firstAttribute="top" secondItem="qiw-Sd-YZR" secondAttribute="top" id="uFb-an-dNd"/>
+                                    <constraint firstItem="VjL-Od-3FN" firstAttribute="trailing" secondItem="RpS-Y3-RCp" secondAttribute="trailing" id="wif-aO-apU"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Pam-zA-6iQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RpS-Y3-RCp"/>
@@ -524,7 +527,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QwJ-8i-GmO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1129"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="669"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logan-wide.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="geL-wy-11w">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
@@ -669,7 +672,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1129" id="FPk-Kx-H3W"/>
+                                            <constraint firstAttribute="bottom" secondItem="sid-EU-iUx" secondAttribute="bottom" constant="40" id="G3W-60-OsK"/>
                                             <constraint firstItem="geL-wy-11w" firstAttribute="top" secondItem="QwJ-8i-GmO" secondAttribute="top" id="M1N-gf-BHB"/>
                                             <constraint firstAttribute="trailing" secondItem="geL-wy-11w" secondAttribute="trailing" id="TUM-c4-zXP"/>
                                             <constraint firstAttribute="trailing" secondItem="sid-EU-iUx" secondAttribute="trailing" constant="20" symbolic="YES" id="Vyf-yT-cow"/>
@@ -689,9 +692,13 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QwJ-8i-GmO" secondAttribute="trailing" id="0LZ-ze-KKv"/>
                                     <constraint firstItem="QwJ-8i-GmO" firstAttribute="bottom" secondItem="rjg-Rj-4wy" secondAttribute="bottom" id="9tK-b8-ZFu"/>
+                                    <constraint firstAttribute="bottom" secondItem="QwJ-8i-GmO" secondAttribute="bottom" constant="20" id="XPY-Jm-oPv"/>
+                                    <constraint firstItem="QwJ-8i-GmO" firstAttribute="top" secondItem="rjg-Rj-4wy" secondAttribute="top" id="b8X-WU-kxW"/>
                                     <constraint firstItem="QwJ-8i-GmO" firstAttribute="trailing" secondItem="rjg-Rj-4wy" secondAttribute="trailing" id="fex-Z8-Unn"/>
                                     <constraint firstItem="QwJ-8i-GmO" firstAttribute="top" secondItem="rjg-Rj-4wy" secondAttribute="top" id="gV5-lQ-6bO"/>
+                                    <constraint firstItem="QwJ-8i-GmO" firstAttribute="leading" secondItem="rjg-Rj-4wy" secondAttribute="leading" id="h0z-yz-gvq"/>
                                     <constraint firstItem="QwJ-8i-GmO" firstAttribute="leading" secondItem="rjg-Rj-4wy" secondAttribute="leading" id="pHP-TI-8xo"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="eTh-Vy-V33"/>
@@ -720,7 +727,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMG-uy-Xuu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5167" y="203"/>
+            <point key="canvasLocation" x="6471" y="131"/>
         </scene>
     </scenes>
     <resources>

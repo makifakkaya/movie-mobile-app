@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularTvShows: Codable{
+struct MyTvShows: Codable{
     let page: Int
     let results: [TvShow]
     let total_results: Int

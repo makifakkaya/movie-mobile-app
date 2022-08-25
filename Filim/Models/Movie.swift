@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularMovies: Codable{
+struct MyMovies: Codable{
     let page: Int
     let results: [Movie]
     let total_results: Int
@@ -31,5 +31,4 @@ struct Movie: Codable{
     let video: Bool
     let vote_average: Double
 }
-
 

@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var movieCast: [MovieCast] = []
+    var movieCredits: MovieCredits?
+    var movie: Movie!
     
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
@@ -15,42 +21,11 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var moviePopularity: UILabel!
     @IBOutlet weak var movieLanguage: UILabel!
     @IBOutlet weak var movieSummary: UILabel!
-    
-    var movie: Movie!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(movie.backdrop_path != nil) {
-            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+movie.backdrop_path!
-            movieImage.load(urlString: posterImageUrl)
-        } else {
-            
-            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+movie.poster_path!
-            movieImage.load(urlString: posterImageUrl)
-        }
-        
-        movieTitle.text = movie.title
-        movieRating.text = "\(movie.vote_average) / 10"
-        moviePopularity.text = "\(movie.popularity)"
-        movieLanguage.text = movie.original_language
-        movieSummary.text = movie.overview
-        loadData(movieID: movie.id)
-    }
-    
-    var Results: [MovieCast] = []
-    var Result: MovieCredits?
-    private func loadData(movieID: Int){
-            guard let jsonUrl = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US"), let data = try? Data(contentsOf: jsonUrl) else {
-                 return
-            }
-            do {
-                Result = try JSONDecoder().decode(MovieCredits.self, from: data)
-                Results = Result!.cast
-            } catch  {
-                print(error.localizedDescription)
-            }
-        
+        placeMovieDetail()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -58,32 +33,30 @@ class MovieDetailViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return Results.count
+        return movieCast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cvcell", for: indexPath) as! CastCollectionViewCell
-        cell.characterNameLabel.text = Results[indexPath.row].character
-        cell.originalNameLabel.text = Results[indexPath.row].original_name
-        if(Results[indexPath.row].profile_path != nil) {
-        let profileImageUrl = "https://image.tmdb.org/t/p/w500"+Results[indexPath.row].profile_path!
-        cell.castImage.load(urlString: profileImageUrl)
-        }
+        
+        cell.prepareMovieCast(movieCast: movieCast[indexPath.row])
         return cell
     }
     
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func placeMovieDetail(){
+        if(movie.backdrop_path != nil) {
+            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+movie.backdrop_path!
+            movieImage.load(urlString: posterImageUrl)
+        } else {
+            let posterImageUrl = "https://image.tmdb.org/t/p/w500"+movie.poster_path!
+            movieImage.load(urlString: posterImageUrl)
+        }
+        movieTitle.text = movie.title
+        movieRating.text = "\(movie.vote_average) / 10"
+        moviePopularity.text = "\(movie.popularity)"
+        movieLanguage.text = movie.original_language
+        movieSummary.text = movie.overview
     }
-    */
-
 }

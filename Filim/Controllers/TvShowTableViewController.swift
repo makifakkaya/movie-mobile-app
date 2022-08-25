@@ -6,128 +6,80 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TvShowTableViewController: UITableViewController {
     
-    var currentURL: String = "https://api.themoviedb.org/3/tv/popular?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
-    
+    var myTvShowResults: [TvShow] = []
+    var myTvShowDetails: [TvShowCredits] = []
+    @IBOutlet weak var segmentedControlOutlet: UISegmentedControl!
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         switch segmentedControlOutlet.selectedSegmentIndex {
         case 0:
-            currentURL = "https://api.themoviedb.org/3/tv/popular?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
-            loadData()
-            self.tableView.reloadData()
+            getTvShows(tab: 0)
         case 1:
-            currentURL = "https://api.themoviedb.org/3/tv/top_rated?api_key=05f4a75f65729a8b5f38439876ea9c1a&language=en-US&page=1"
-            loadData()
-            self.tableView.reloadData()
+            getTvShows(tab: 1)
         default:
             break
         }
     }
-    @IBOutlet weak var segmentedControlOutlet: UISegmentedControl!
-    
-    var Results: [TvShow] = []
-    var Result: PopularTvShows?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        getTvShows(tab: 0)
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as! TvShowDetailViewController
-        guard let row = tableView.indexPathForSelectedRow?.row else {
+    func getTvShows(tab: Int)  {
+        switch tab{
+        case 0:
+            API.getPopularTvShows{ myTvShows in
+                self.myTvShowResults = myTvShows.results
+                self.myTvShowDetails.removeAll()
+                for movie in self.myTvShowResults {
+                    API.getTvShowDetails(id: movie.id) { tvShowCredit in
+                        self.myTvShowDetails.append(tvShowCredit)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        case 1:
+            API.getTopRatedTvShows{ myTvShows in
+                self.myTvShowResults = myTvShows.results
+                self.myTvShowDetails.removeAll()
+                for movie in self.myTvShowResults {
+                    API.getTvShowDetails(id: movie.id) { tvShowCredit in
+                        self.myTvShowDetails.append(tvShowCredit)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        default:
             return
         }
-        let tvShow = Results[row]
-        viewController.tvShow = tvShow
     }
-    
-    private func loadData(){
-            guard let jsonUrl = URL(string: currentURL), let data = try? Data(contentsOf: jsonUrl) else {
-                 return
-            }
-            do {
-                Result = try JSONDecoder().decode(PopularTvShows.self, from: data)
-                Results = Result!.results
-            } catch  {
-                print(error.localizedDescription)
-            }
-    }
-    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Results.count
+        return myTvShowResults.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tvcell", for: indexPath) as! TvShowTableViewCell
-        cell.prepareTvShow(tvShow: Results[indexPath.row])
+        cell.prepareTvShow(tvShow: myTvShowResults[indexPath.row])
         return cell
     }
-
-    /*
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as! DetailViewController
+        let viewController = segue.destination as! TvShowDetailViewController
         guard let row = tableView.indexPathForSelectedRow?.row else {
             return
         }
-        let movie = popularMoviesResultElements[row]
-        viewController.movie = movie
-    }*/
-
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        let tvShow = myTvShowResults[row]
+        viewController.tvShow = tvShow
+        viewController.tvShowCast = myTvShowDetails[row].cast
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
