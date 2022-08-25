@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.6.2)
+  - SweetRouter (1.0.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire
+  - SweetRouter
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - SweetRouter
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  SweetRouter: 694bb023258f548ca5dd2396ba4edbe13e7ff216
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: cedd824af5fbf5fbfcd14675dbb86fbc85a35584
+PODFILE CHECKSUM: 9f9e5cdf63c079987f2125a298fc22a6416de06c
 
 COCOAPODS: 1.11.3

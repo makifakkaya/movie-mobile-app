@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Filim/Pods-Filim-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SweetRouter/SweetRouter.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

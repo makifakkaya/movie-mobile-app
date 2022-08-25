@@ -1,0 +1,6 @@
+framework module SweetRouter {
+  umbrella header "SweetRouter-umbrella.h"
+
+  export *
+  module * { export * }
+}

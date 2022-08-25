@@ -5,34 +5,44 @@
 //  Created by Akif on 25.08.2022.
 //
 
-import Foundation
 import Alamofire
+import SweetRouter
 
-struct Router: URLRequestConvertible {
-    
-    static private let baseUrlString = "https://api.themoviedb.org/3/"
-    
-    var path: String!
-    var parameters: Parameters?
-    var method: Alamofire.HTTPMethod!
-    
-    init(method: Alamofire.HTTPMethod, path: String, parameters: Parameters?) {
-        self.method = method
-        self.parameters = parameters
-        self.path = path
-    }
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = URL(string: Router.baseUrlString)!
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        urlRequest.httpMethod = method.rawValue
+enum Api: EndpointType {
+    enum Environment: EnvironmentType {
+        case production
         
-        if self.method == Alamofire.HTTPMethod.post {
-            return try Alamofire.JSONEncoding.default.encode(urlRequest, with: self.parameters!)
-        } else if self.method == Alamofire.HTTPMethod.put {
-            return try Alamofire.URLEncoding.default.encode(urlRequest, with: self.parameters)
-        } else {
-            return urlRequest
+        var value: URL.Env {
+            switch self {
+            case .production: return .init(.https, "api.themoviedb.org")
+            }
         }
     }
+    
+    enum Route: RouteType {
+        case popularMovies
+        case nowPlayingMovies
+        case topRatedMovies
+        case popularTvShows
+        case topRatedTvShows
+        case movieDetails(for: Int)
+        case tvShowDetails(for: Int)
+        
+        var route: URL.Route {
+            switch self {
+                
+            case .popularMovies: return URL.Route(at: "3", "movie", "popular").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"), ("page", "1"))
+            case .nowPlayingMovies: return URL.Route(at: "3", "movie", "now_playing").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"), ("page", "1"))
+            case .topRatedMovies: return URL.Route(at: "3", "movie", "top_rated").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"), ("page", "1"))
+            case .popularTvShows: return URL.Route(at: "3", "tv", "popular").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"), ("page", "1"))
+            case .topRatedTvShows: return URL.Route(at: "3", "tv", "top_rated").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"), ("page", "1"))
+                
+            case let .movieDetails(for: id): return URL.Route(at: "3", "movie", "\(id)", "credits").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"))
+            case let .tvShowDetails(for: id): return URL.Route(at: "3", "tv", "\(id)","credits").query(("api_key", "05f4a75f65729a8b5f38439876ea9c1a"), ("language", "en-US"))
+                
+        }
+    }
+    }
+    
+    static let current: Environment = .production
 }

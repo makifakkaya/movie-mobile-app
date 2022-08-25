@@ -6,6 +6,7 @@ target 'Filim' do
   use_frameworks!
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire'
+  pod 'SweetRouter'
   # Pods for Filim
 
 end
