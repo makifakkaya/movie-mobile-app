@@ -1,4 +1,4 @@
-# Filim
+# Film Application
 
 made by using [TheMovieDB](https://developers.themoviedb.org/)
 
